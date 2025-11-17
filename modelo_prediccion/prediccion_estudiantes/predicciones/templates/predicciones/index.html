@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicción de Desempeño Estudiantil</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            margin: 50px auto;
+        }
+
+        input {
+            margin: 5px;
+            padding: 5px;
+            width: 90%;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .boton-historial {
+            display: inline-block;
+            margin-top: 15px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .boton-historial:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Predicción de Desempeño Estudiantil</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Nombre del estudiante:</label>
+        <input type="text" name="nombre_estudiante" required><br><br>
+        <input type="number" step="any" name="Hours_Studied" placeholder="Horas de estudio"><br>
+        <input type="number" step="any" name="Attendance" placeholder="Asistencia (%)"><br>
+        <input type="number" step="any" name="Parental_Involvement" placeholder="Involucramiento de padres (1-10)"><br>
+        <input type="number" step="any" name="Access_to_Resources" placeholder="Acceso a recursos (1-10)"><br>
+        <input type="number" step="any" name="Extracurricular_Activities"
+            placeholder="Actividades extracurriculares (1-10)"><br>
+        <input type="number" step="any" name="Sleep_Hours" placeholder="Horas de sueño"><br>
+        <input type="number" step="any" name="Previous_Scores" placeholder="Puntajes previos"><br>
+        <input type="number" step="any" name="Motivation_Level" placeholder="Nivel de motivación (1-10)"><br>
+        <button type="submit">Predecir</button>
+        <a href="{% url 'historial' %}" class="boton-historial">Ver historial de predicciones</a>
+    </form>
+</body>
+
+</html>
